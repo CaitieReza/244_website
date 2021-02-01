@@ -1,10 +1,16 @@
 ---
-title: "About this site"
+title: "About me"
 description: |
-  Some additional details about the website
+  h
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+Before heading to Bren, Caitie graduated from Michigan State University in 2019 with a Bachelor of Science in Zoology.  Early in her undergraduate career, she began working on a NOAA-funded study using collaborative methods of fisheries management to better evaluate the status of marine ecosystems. She presented her team’s findings at several national and international research conferences and co-authored a journal piece published in Frontiers in Ecology outlining their research. During her third year, Caitie traveled to New Zealand for a study abroad program, where she was hypnotized by the ecologically distinct landscapes and rich local culture of the South Pacific. Upon returning to the US, she headed north to the International Arctic Research Center at University of Alaska Fairbanks where she assessed how high-risk communities and ecosystems are responding to climate change. 
+
+Shortly after graduating, Caitie relocated to Guam to work as a biologist for the USGS Brown Tree Snake Project.  Throughout her 16-month stay on the island, she performed intensive fieldwork to learn more about the cryptic yet invasive Brown Tree Snake and its impact on Guam’s native flora and fauna. 
+
+
+Inspired by the people and creatures in each place she’s visited, Caitie hopes to continue studying threatened ecosystems and working closely with the stakeholders within them. By coupling the Conservation Planning specialization with a focus in Communication at Bren, she is determined to further explore the intersection of ecology and social science to effectively spearhead environmental issues.

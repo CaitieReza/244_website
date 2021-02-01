@@ -4,15 +4,15 @@ image: "brengoodpic.png"
 links:
   - label: LinkedIn
     url: "https://www.linkedin.com/in/caitie-reza-50b8a7115/"
-  - label: Twitter
-    url: "https://twitter.com/"
   - label: GitHub
     url: "https://github.com/CaitieReza"
-  - label: Email
+  - label: CV
     url: "caitlinreza@ucsb.edu | rezacait@gmail.com"
 site: distill::distill_website
 output:
   postcards::jolla
 ---
- 
-Caitie is a first year master’s student from Southern California. Inspired by the people and creatures in the places she’s visited, Caitie hopes to continue studying threatened ecosystems and working closely with the stakeholders within them. At the Bren School, she is determined to further explore the intersection of ecology and social science to effectively spearhead environmental issues.
+
+Hi there! I am a first year master’s student from Southern California. Currently, I study Environmental Science and Management at the Bren School at UCSB. 
+
+
