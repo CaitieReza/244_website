@@ -1,5 +1,6 @@
 ---
 title: CV
+image: "brengoodpic.png"
 name: Caitie
 surname: Reza
 position: "Masters Student"
@@ -36,12 +37,33 @@ tribble(
 
 ```{r}
 tribble(
-  ~Year, ~Type, ~Desc,
-  1903, "Physics", "Awarded for her work on radioactivity with Pierre Curie and Henri Becquerel",
-  1911, "Chemistry", "Awarded for the discovery of radium and polonium"
+  ~Year, ~Type, ~Desc, ~Where,
+  "2019 - 2020", "Biologist", "USGS Brown Tree Snake Project", "Guam National Wildlife Refuge, Guam",
+  "2016 - pres", "Researcher", "Human Environment Interactions Lab", "East Lansing, MI",
+  "2018", "Student Researcher", "International Arctic Research Center, University of Alaska Fairbanks", "Fairbanks, AK",
+  "2017", "Research Assistant", "Holekamp Behavioral Ecology Laboratory", "East Lansing, MI",
+  
+  
 ) %>% 
   brief_entries(
-    glue::glue("Nobel Prize in {Type}"),
+    glue::glue(" {Type}"),
+    Year, 
+    Desc
+  )
+```
+## Additional Experience
+
+```{r}
+tribble(
+  ~Year, ~Type, ~Desc, ~Where,
+  "2020", "Teaching Assistant", " UCSB Ecology, Evolution, and Marine Biology Department", "Santa Barbara, CA",
+  "2018", "Volunteer Interpretive Officer", "Alaska Department of Natural Resources (DNR)", "Fishook, AK",
+  "2013 - 2014", "Volunteer", "Wildlife Learning Center", "Sylmar, CA",
+  
+  
+) %>% 
+  brief_entries(
+    glue::glue(" {Type}"),
     Year, 
     Desc
   )
@@ -49,9 +71,6 @@ tribble(
 
 ## Publications
 
-```{r}
-
-```
 
 
 1. Aminpor, P., Gray, S., **Reza, C.**, Scyphers, S., Grabowski, J., Murphy, B., and Baltaxe, D., Harnessing Collective
