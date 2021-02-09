@@ -5,27 +5,20 @@ surname: Reza
 position: "Masters Student"
 address: "Bren School of Environmental Science & Managment, University of California Santa Barbara"
 phone: +1 661 666 1356
-www: https://caitiereza.github.io/244_website/
+www: 
 email: "caitlinreza@ucsb.edu"
 github: https://github.com/CaitieReza/
 linkedin: https://www.linkedin.com/in/caitie-reza-50b8a7115/
 date: "`r format(Sys.time(), '%B %Y')`"
-aboutme: "Hi"
 output: 
   vitae::markdowncv:
-    theme: kjhealy
+    theme: davewhipp
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
 ```
-
-## gg
-
- * I poisoned myself doing research.
- * I was the first woman to win a Nobel prize
- * I was the first person and only woman to win a Nobel prize in two different sciences.
 
 ## Education
 
@@ -57,10 +50,12 @@ tribble(
 ## Publications
 
 ```{r}
-library(dplyr)
-knitr::write_bib(c("vitae", "tibble"), "packages.bib")
 
-bibliography_entries("packages.bib") %>%
-  arrange(desc(author$family), issued)
 ```
 
+
+1. Aminpor, P., Gray, S., **Reza, C.**, Scyphers, S., Grabowski, J., Murphy, B., and Baltaxe, D., Harnessing Collective
+Intelligence for Conservation, Frontiers in Ecology and the Environment (2020)
+
+2. Schwermer, H., Aminpor, P., **Reza, C.**, Funk, S., Möllmann, C., and Gray, S. Modeling and Understanding
+Biocultural Variations, Conservation Science and Practice (In Review)
