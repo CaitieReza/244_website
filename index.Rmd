@@ -7,12 +7,17 @@ links:
   - label: GitHub
     url: "https://github.com/CaitieReza"
   - label: CV
-    url: "caitlinreza@ucsb.edu | rezacait@gmail.com"
+    url: "https://drive.google.com/file/d/1vV4eSqMrV8Ka5g-79BuWiPlzGgU-nhjd/view?usp=sharing"
 site: distill::distill_website
 output:
   postcards::jolla
 ---
 
 Hi there! I am a first year master’s student from Southern California. Currently, I study Environmental Science and Management at the Bren School at UCSB. 
+
+
+
+
+caitlinreza@ucsb.edu | rezacait@gmail.com
 
 

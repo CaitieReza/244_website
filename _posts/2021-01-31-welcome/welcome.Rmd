@@ -1,22 +1,195 @@
 ---
-title: "welcome"
+title: "Text Mining a George RR Martin Classic"
 description: |
-  A short description of the post.
+  Using text analysis to observe trends in 'A Clash of Kings'.
 author:
   - name: Caitlin Reza
 date: 01-31-2021
 output:
-  distill::distill_article:
+    distill::distill_article:
     self_contained: false
+    code_folding: hide
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(tidytext)
+library(textdata)
+library(pdftools)
+library(ggwordcloud)
+library(wordcloud2)
+library(viridis)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+### Summary
+
+##### In this document, I use text mining analysis and basic wrangling to assess text patterns in George RR Martin's 1999 classic 'A Clash of Kings', because I will never get around to reading it any other way.
+
+
+**Text:** Martin, George R. R. A Clash of Kings. New York: Bantam Books, 1999. Internet Archive, http://archive.org/details/fire-blood-george-rr-martin. 
+
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Read in the PDF
+clash_kings_text <- pdf_text("A-Clash-Of-Kings-George-RR-Martin.pdf")
+
+```
+
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Let's make it tidy
+
+clash_tidy <- data.frame(clash_kings_text) %>%  # convert into data frame, split it up by page
+  mutate(text_full = str_split(clash_kings_text, pattern = '\\n')) %>% # split lines (each PDF line ends with \)
+    unnest(text_full) %>% 
+  mutate(text_full = str_trim(text_full)) 
+
+```
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# But a bit more tidy
+
+clash_df <- clash_tidy %>% 
+  slice(-(1:127))  # Get rid of all the unnecessary publishing grime
+
+# Don't separate by chapter because George RR Martin for some reason found it necessary to separate his book by chapter-less names 
+ 
+# Separate by word (each word a single line)
+clash_tokens <- clash_df %>% 
+  unnest_tokens(word, text_full) %>% 
+  select(-clash_kings_text)
+```
+
+
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Count the occurrence of every word
+clash_wordcount <- clash_tokens %>% 
+  count(word)
+
+# Get rid of those pesky "stopwords" using antijoin()!
+clash_nonstop_words <- clash_tokens %>% 
+  anti_join(stop_words)
+# Ponder if "Game Thrones" has the same ring to it as "Game of Thrones"
+
+# (it doesn't)
+
+```
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Re-count the words, this time omitting stopwords
+nonstop_counts <- clash_nonstop_words %>% 
+  count(word) %>% 
+  arrange(-n)
+
+```
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Top 10 words used in Clash of Kings?
+top_10_words <- nonstop_counts %>% 
+  slice(1:10)
+
+# Plot it just for fun
+ggplot(data = top_10_words, aes(x = reorder(word, n), y = n, fill = "red")) +
+  geom_col(color = "tomato4") +
+  coord_flip() + # Make it easy on the eye
+  labs(x = "Word",
+       y = "Frequency of Use",
+       title = "Top 10 Words in George RR Martin's 'A Clash of Kings'") +
+  theme(legend.position = "none")
+
+
+
+```
+
+### Wordcloud: Top 100 Words
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Creating a WordCloud
+
+clash_top100 <- nonstop_counts %>% 
+  arrange(-n) %>% 
+  slice(1:100) # Make a subset of 100 most used words
+
+clash_cloud <- ggplot(data = clash_top100, aes(label = word)) +
+  geom_text_wordcloud(aes(color = n, size = n), shape = "diamond", backgroundColor = "grey") +
+  scale_size_area(max_size = 6) +
+  scale_color_gradientn(colors = c("brown","orange","red")) +
+  theme_minimal()
+  
+
+clash_cloud
+
+
+
+
+```
+
+
+### Wordcloud: Top 300 Words
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Make an interactive word cloud of top 300 words
+clash_top300 <- nonstop_counts %>% 
+  arrange(-n) %>% 
+  slice(1:300)
+
+
+wordcloud2(clash_top300, size = .65, color = "orange", backgroundColor="black", shape = "star")
+```
+
+### Sentiment Analysis 
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Load the lexicon: I'll choose the "afinn" lexicon
+# get_sentiments(lexicon = "afinn")
+
+# Bind the file with all of the non- "stop words" to the lexicon
+clash_afinn <- clash_nonstop_words %>% 
+  inner_join(get_sentiments("afinn")) # This put a value on each word in the book, each value corresponds with an emotion bin
+
+
+# Count the number of words per value
+afinn_counts <- clash_afinn %>% 
+  count(value) %>% 
+  mutate(emotion = case_when( # Add descriptions so you can color code them later in ggplot
+    value %in% c(-5, -4, -3, -2, -1) ~ "Negative",
+    value %in% c(1, 2, 3, 4, 5) ~ "Positive"
+  ))
+
+
+```
+
+
+
+```{r, echo = TRUE, warning = FALSE, message = FALSE}
+# Create a visualization showing the distribution of word-emotion-bin associations
+
+
+ggplot(data = afinn_counts, aes(x = value,y = n, fill = emotion)) + 
+  geom_col() + 
+  facet_wrap(~emotion, scales = "free") +
+  labs(x = "Emotional Value (AFINN Lexicon)",
+       y = "Frequency Used",
+       title = "Emotional Sentiment Trends in 'A Clash of Kings'") +
+  theme(legend.position = "none")
+
+
+```
+
+
+
+
+
+
 
 
