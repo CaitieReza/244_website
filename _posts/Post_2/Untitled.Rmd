@@ -4,7 +4,7 @@ description: |
   Two Species of Palmetto Trees Walk Into an .rmd file
 author:
   - name: Caitie Reza
-date: 01-31-2021
+date: 01-20-2021
 output:
     distill::distill_article:
     self_contained: false
