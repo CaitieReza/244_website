@@ -1,11 +1,30 @@
 ---
 title: "About me"
+image: "brengoodpic.png"
 description: |
 
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(htmltools)
 ```
 
-  Before heading to Bren, Caitie graduated from Michigan State University in 2019 with a Bachelor of Science in Zoology.  Early in her undergraduate career, she began working on a NOAA-funded study using collaborative methods of fisheries management to better evaluate the status of marine ecosystems. She presented her team’s findings at several national and international research conferences and co-authored a journal piece published in Frontiers in Ecology outlining their research. During her third year, Caitie traveled to New Zealand for a study abroad program, where she was hypnotized by the ecologically distinct landscapes and rich local culture of the South Pacific. Upon returning to the US, she headed north to the International Arctic Research Center at University of Alaska Fairbanks where she assessed how high-risk communities and ecosystems are responding to climate change. Shortly after graduating, Caitie relocated to Guam to work as a biologist for the USGS Brown Tree Snake Project.  Throughout her 16-month stay on the island, she performed intensive fieldwork to learn more about the cryptic yet invasive Brown Tree Snake and its impact on Guam’s native flora and fauna. Inspired by the people and creatures in each place she’s visited, Caitie hopes to continue studying threatened ecosystems and working closely with the stakeholders within them. By coupling the Conservation Planning specialization with a focus in Communication at Bren, she is determined to further explore the intersection of ecology and social science to effectively spearhead environmental issues.
+
+```{r, fig.align= "center"}
+img(src = "nz.jpg", height = "85%", width = "85%")
+
+
+```
+
+  Before heading to Bren, I graduated from Michigan State University in 2019 with a Bachelor of Science in Zoology.  Early in my undergraduate career, I began working on a NOAA-funded study using collaborative methods of fisheries management to better evaluate the status of marine ecosystems. I had the pleasure of presenting our team's findings at several national and international research conferences, and co-author a journal piece published in Frontiers in Ecology outlining the research. During my third year of undergraduate, I traveled to New Zealand for a study abroad program, where I was hypnotized by the ecologically distinct landscapes and rich local culture of the South Pacific. Upon returning to the US, I headed north to the International Arctic Research Center at University of Alaska Fairbanks where I assessed how high-risk communities and ecosystems are responding to climate change. Shortly after graduating, I relocated to Guam to work as a biologist for the USGS Brown Tree Snake Project.  Throughout my 16-month stay on the island, I performed intensive fieldwork to learn more about the cryptic yet invasive Brown Tree Snake and its impact on Guam’s native flora and fauna. Inspired by the people and creatures in each place she’s visited, I hope to continue studying threatened ecosystems and working closely with the stakeholders within them. By coupling the Conservation Planning specialization with a focus in Communication at Bren, I am determined to further explore the intersection of ecology and social science to effectively spearhead environmental issues.
+  
+  
+  
+```{r}
+
+img(src = "bts.png", height = "40%", width = "40%")
+
+```
+
